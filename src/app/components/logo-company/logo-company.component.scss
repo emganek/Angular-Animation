@@ -1,0 +1,84 @@
+$path-lengths: 231px, 212px, 200px, 144px, 192px, 162px, 162px, 435px;
+$duration: 1.2s;
+
+.page-wrapper {
+  background: #ababab;
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.logo-wrapper {
+  position: relative;
+  height: 400px;
+  width: 100%;
+}
+
+.logo-brand {
+  top: 50%;
+  left: 50%;
+  translate: -50% -50%;
+  position: absolute;
+  
+  @for $i from 1 through 8 {
+    path:nth-child(#{$i}) {
+      stroke-dasharray: nth($path-lengths, $i);
+      stroke-dashoffset: nth($path-lengths, $i);
+
+      @if $i == 8 {
+        animation: logo-loading $duration ease forwards calc(#{$i} * 0.5s),
+          dash-fill $duration ease forwards 5s;
+      } @else {
+        animation: logo-loading $duration ease forwards calc(#{$i} * 0.5s),
+          letter-fill $duration ease forwards 5s;
+      }
+    }
+  }
+}
+
+.logo-name {
+  top: 65%;
+  left: 61%;
+  translate: -50% -50%;
+  position: absolute;
+  opacity: 0;
+  animation: show-logo-name $duration linear forwards 5s;
+}
+
+@keyframes logo-loading {
+  to {
+    stroke-dashoffset: 0px;
+  }
+}
+
+@keyframes dash-fill {
+  from {
+    fill: transparent;
+  }
+
+  to {
+    fill: #cddb28;
+  }
+}
+
+@keyframes letter-fill {
+  from {
+    fill: transparent;
+  }
+
+  to {
+    fill: white;
+  }
+}
+
+@keyframes show-logo-name {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}

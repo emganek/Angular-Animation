@@ -1,0 +1,45 @@
+$path-lengths: 231px, 212px, 200px, 144px, 192px, 162px, 162px, 435px;
+$duration: 1.2s;
+
+.page-wrapper {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  bottom: 0px;
+  right: 0px;
+  background: #ababab;
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+}
+
+.logo-wrapper {
+  position: relative;
+  height: 400px;
+  width: 100%;
+}
+
+.logo-brand {
+  top: 50%;
+  left: 50%;
+  translate: -50% -50%;
+  position: absolute;
+
+  @for $i from 1 through 8 {
+    path:nth-child(#{$i}) {
+      stroke-dasharray: nth($path-lengths, $i);
+      stroke-dashoffset: nth($path-lengths, $i);
+    }
+  }
+}
+
+.logo-name {
+  top: 65%;
+  left: 61%;
+  translate: -50% -50%;
+  position: absolute;
+  opacity: 0;
+}
