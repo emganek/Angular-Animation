@@ -40,7 +40,7 @@ import {
           ]),
           query('.logo-name', [animate('1.2s', style({ opacity: 1 }))]),
         ]),
-        animate('1s', style({ opcity: 1 })),
+        animate('1s', style({ opacity: 1 })),
       ]),
     ]),
   ],
